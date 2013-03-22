@@ -40,6 +40,13 @@ PIXI.MovieClip = function(textures)
 	 * @type Boolean
 	 */
 	this.playing;
+
+	/**
+	 * [read only] indicates if the MovieClip should only play through once
+	 * @property playOnce
+	 * @type Boolean
+	 */
+	this.playingOnce = false;
 }
 
 // constructor
@@ -63,6 +70,18 @@ PIXI.MovieClip.prototype.play = function()
 {
 	this.playing = true;
 }
+
+/**
+ * Plays the MovieClip once and stops
+ * @method play
+ */
+
+ PIXI.MovieClip.prototype.playOnce = function()
+ {
+ 	this.playing = true;
+ 	this.playingOnce = true;
+ }
+
 
 /**
  * Stops the MovieClip and goes to a specific frame
@@ -91,10 +110,19 @@ PIXI.MovieClip.prototype.gotoAndPlay = function(frameNumber)
 PIXI.MovieClip.prototype.updateTransform = function()
 {
 	PIXI.Sprite.prototype.updateTransform.call(this);
-	
+
 	if(!this.playing)return;
-	
+
 	this.currentFrame += this.animationSpeed;
 	var round = (this.currentFrame + 0.5) | 0;
-	this.setTexture(this.textures[round % this.textures.length]);
+	var frames = this.textures.length;
+	this.setTexture(this.textures[round % frames]);
+	if (this.playingOnce)
+	{
+		if ((round / frames) >= 1)
+		{
+			this.playingOnce = false;
+			this.gotoAndStop(0);
+		}
+	}
 }
