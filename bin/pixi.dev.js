@@ -203,9 +203,8 @@ PIXI.DisplayObject.prototype.updateTransform = function()
 	
 		///AAARR GETTER SETTTER!
 	
-	this.localTransform[2] = this.position.x;
-	this.localTransform[5] = this.position.y;
-	
+	this.localTransform[2] = ~~ (this.position.x + 0.5);
+	this.localTransform[5] = ~~ (this.position.y + 0.5);
 
 	// TODO optimize?
 	mat3.multiply(this.localTransform, this.parent.worldTransform, this.worldTransform);
