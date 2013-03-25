@@ -611,7 +611,6 @@ PIXI.MovieClip = function(textures)
 	 * @type Boolean
 	 */
 	this.playing;
-<<<<<<< HEAD
 
 	/**
 	 * [read only] indicates if the MovieClip should only play through once
@@ -619,8 +618,6 @@ PIXI.MovieClip = function(textures)
 	 * @type Boolean
 	 */
 	this.playingOnce = false;
-=======
->>>>>>> master
 }
 
 // constructor
@@ -646,7 +643,6 @@ PIXI.MovieClip.prototype.play = function()
 }
 
 /**
-<<<<<<< HEAD
  * Plays the MovieClip once and stops
  * @method play
  */
@@ -659,8 +655,6 @@ PIXI.MovieClip.prototype.play = function()
 
 
 /**
-=======
->>>>>>> master
  * Stops the MovieClip and goes to a specific frame
  * @method gotoAndStop
  * @param frameNumber {Number} frame index to stop at
@@ -687,7 +681,6 @@ PIXI.MovieClip.prototype.gotoAndPlay = function(frameNumber)
 PIXI.MovieClip.prototype.updateTransform = function()
 {
 	PIXI.Sprite.prototype.updateTransform.call(this);
-<<<<<<< HEAD
 
 	if(!this.playing)return;
 
@@ -705,15 +698,6 @@ PIXI.MovieClip.prototype.updateTransform = function()
 	}
 }
 /**
-=======
-	
-	if(!this.playing)return;
-	
-	this.currentFrame += this.animationSpeed;
-	var round = (this.currentFrame + 0.5) | 0;
-	this.setTexture(this.textures[round % this.textures.length]);
-}/**
->>>>>>> master
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
 
@@ -944,14 +928,6 @@ PIXI.InteractionManager.prototype.onMouseDown = function(event)
 
 PIXI.InteractionManager.prototype.onMouseUp = function(event)
 {
-<<<<<<< HEAD
-	if(this.currentDown)
-	{
-		this.mouse.target = this.currentDown;
-		if(this.currentDown.mouseup)this.currentDown.mouseup(this.mouse);	
-		
-		if(this.currentOver == this.currentDown)if(this.currentDown.click)this.currentDown.click(this.mouse);	
-=======
 	if(this.currentOver)
 	{
 		this.mouse.target = this.currentOver;
@@ -965,7 +941,6 @@ PIXI.InteractionManager.prototype.onMouseUp = function(event)
 		if(this.currentOver == this.currentDown)if(this.currentDown.click)this.currentDown.click(this.mouse);
 		
 	
->>>>>>> master
 		this.currentDown = null;
 	}
 }
